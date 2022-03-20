@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, Switch, Route, Redirect, withRouter } from "react-router-dom";
+import React from 'react';
+import { Link, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
 // import HomePage from "./home";
 // import Vendors from "./vendors";
@@ -17,22 +17,24 @@ import { Link, Switch, Route, Redirect, withRouter } from "react-router-dom";
 // import Developers from "./developers";
 
 const Home = (props) => {
-    return (
-        <></>
-        // <Switch>
-        //     <Route path="/" exact component={HomePage} />
+	return (
+		// <Switch>
+		// 	<Route path="/" exact component={HomePage} />
 
-        //     <Route path="/administrators" exact component={Administrators} />
-        //     <Route path="/chargeboxes" exact component={Chargeboxes} />
-        //     <Route path="/transactions" exact component={Transactions} />
-        //     <Route path="/reservations" exact component={Reservations} />
-        //     <Route path="/reports" exact component={Reports} />
-        //     <Route path="/rfids" exact component={Rfids} />
-        //     <Route path="/advanced/developers" exact component={Developers} />
-        //     <Route path="/settings" exact component={Settings} />
-        //     <Redirect to="/" />
-        // </Switch>
-    );
+		// 	<Route path="/administrators" exact component={Administrators} />
+		// 	<Route path="/chargeboxes" exact component={Chargeboxes} />
+		// 	<Route path="/transactions" exact component={Transactions} />
+		// 	<Route path="/reservations" exact component={Reservations} />
+		// 	<Route path="/reports" exact component={Reports} />
+		// 	<Route path="/rfids" exact component={Rfids} />
+		// 	<Route path="/advanced/developers" exact component={Developers} />
+		// 	<Route path="/settings" exact component={Settings} />
+		// 	<Redirect to="/" />
+		// </Switch>
+		<>
+			<div>Ciao</div>
+		</>
+	);
 };
 
 export default withRouter(Home);

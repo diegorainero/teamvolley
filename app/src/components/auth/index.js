@@ -1,24 +1,25 @@
-import { AUTH_LOGIN } from "react-admin";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { userLogin } from 'react-admin';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
-export default (type, params) => {
-    console.log("Dentro Login");
-    if (type === AUTH_LOGIN) {
-        const { username, password } = params;
-        const request = new Request("https://mydomain.com/authenticate", {
-            method: "POST",
-            body: JSON.stringify({ username, password }),
-            headers: new Headers({ "Content-Type": "application/json" }),
-        });
-        return fetch(request)
-            .then((response) => {
-                if (response.status < 200 || response.status >= 300) {
-                    throw new Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then(({ token }) => {
-                localStorage.setItem("token", token);
-            });
-    }
-    return Promise.resolve();
-};
+class MyLoginPage extends Component {
+	submit = (e) => {
+		e.preventDefault();
+		// gather your data/credentials here
+		const credentials = {};
+
+		// Dispatch the userLogin action (injected by connect)
+		this.props.userLogin(credentials);
+	};
+
+	render() {
+		return (
+			<MuiThemeProvider theme={this.props.theme}>
+				<form onSubmit={this.submit}>...</form>
+			</MuiThemeProvider>
+		);
+	}
+}
+
+export default connect(undefined, { userLogin })(MyLoginPage);
