@@ -3,7 +3,6 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 import { Loading, Admin, fetchUtils, Resource, Authenticated } from 'react-admin';
 import Login from '../auth/login';
 import HomeContainer from '../home';
-import MyLoginPage from '../auth';
 import simpleRestProvider from 'ra-data-simple-rest';
 
 import { asyncTimeout, CheckForIndexHTMLChange } from '../../utilities';
@@ -49,11 +48,10 @@ class App extends React.Component {
 		//this.loopRefresh();
 		let token = localStorage.getItem('token');
 		console.log('Token', token);
-		if (token || token !== null) {
+		if (!token || !token === null) {
 			console.log('Error');
 		} else {
 			console.log('Cambio State');
-			this.secureSetState({ ready: true });
 			this.setState({ ready: true });
 			//this.props.history.replace('/login');
 		}
@@ -72,20 +70,15 @@ class App extends React.Component {
 				options.headers = new Headers({ Accept: 'application/json' });
 			}
 			// add your own headers here
-			options.headers.set('X-Custom-Header', 'foobar');
+			//options.headers.set('X-Custom-Header', 'foobar');
 			console.log('Options', options);
 			return fetchUtils.fetchJson(url, options);
 		};
 		const dataProvider = simpleRestProvider('http://localhost/api/', httpClient);
 
 		return (
-			// <Switch>
-			// 	<Route path="/login" exact component={Login} />
-			// 	{/* <Route path="/forgot/:id?" exact component={Forgot} /> */}
-			// 	<Route path="*" exact component={Home} />
-			// </Switch>
-			<Admin loginPage={MyLoginPage} authProvider={Login} dataProvider={dataProvider}>
-				<Authenticated authParams={{ foo: 'bar' }} location={location}>
+			<Admin authProvider={Login} dataProvider={dataProvider}>
+				<Authenticated authParams={{ foo: 'bar' }}>
 					<HomeContainer></HomeContainer>
 				</Authenticated>
 			</Admin>

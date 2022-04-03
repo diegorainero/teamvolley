@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Switch, Route, Redirect, withRouter } from 'react-router-dom';
 
-import HomePage from './home';
+// import HomePage from './home';
 // import Vendors from "./vendors";
 // import Clients from "./clients";
 // import Administrators from "./administrators";
@@ -17,12 +17,7 @@ import HomePage from './home';
 // import Developers from "./developers";
 
 const Home = (props) => {
-	return (
-		<Switch>
-			<Route path="/" exact component={HomePage} />
-			<Redirect to="/" />
-		</Switch>
-	);
+	return <>Ciao</>;
 };
 
 export default withRouter(Home);
